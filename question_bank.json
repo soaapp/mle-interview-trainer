@@ -1,0 +1,807 @@
+{
+  "categories": {
+    "Definitions": {
+      "multiple_choice": [
+        {
+          "id": "def_mc_1",
+          "question": "What is an encoder in the context of deep learning?",
+          "options": [
+            "A component that converts text to numbers",
+            "A neural network component that transforms input into a lower-dimensional representation",
+            "A data compression algorithm",
+            "A type of loss function"
+          ],
+          "correct_answer": 1,
+          "explanation": "An encoder maps input data to a latent representation, often used in autoencoders, transformers, and other architectures.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "def_mc_2",
+          "question": "What does LLM stand for and what is it?",
+          "options": [
+            "Large Language Model - a neural network trained on vast amounts of text data",
+            "Linear Learning Method - a simple machine learning algorithm",
+            "Logical Learning Machine - a rule-based AI system",
+            "Low Latency Model - a fast inference model"
+          ],
+          "correct_answer": 0,
+          "explanation": "Large Language Models are neural networks trained on massive text corpora to understand and generate human-like text.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "def_mc_3",
+          "question": "What is the difference between training and fine-tuning?",
+          "options": [
+            "Training is faster than fine-tuning",
+            "Training is from scratch, fine-tuning adapts a pre-trained model",
+            "Fine-tuning uses more data than training",
+            "They are exactly the same process"
+          ],
+          "correct_answer": 1,
+          "explanation": "Training builds a model from scratch, while fine-tuning adapts an existing pre-trained model to a new task or domain.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "def_mc_4",
+          "question": "What is a decoder in neural networks?",
+          "options": [
+            "A component that converts representations back to original input format",
+            "A data preprocessing step",
+            "A type of activation function",
+            "An optimization algorithm"
+          ],
+          "correct_answer": 0,
+          "explanation": "A decoder takes encoded representations and reconstructs or generates output, often paired with encoders.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "def_mc_5",
+          "question": "What are embeddings in machine learning?",
+          "options": [
+            "Database storage methods",
+            "Dense vector representations of discrete objects like words or items",
+            "Neural network architectures",
+            "Training algorithms"
+          ],
+          "correct_answer": 1,
+          "explanation": "Embeddings are dense, low-dimensional vector representations that capture semantic relationships between discrete objects.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "def_mc_6",
+          "question": "What is a transformer in deep learning?",
+          "options": [
+            "A data preprocessing tool",
+            "A neural architecture based on self-attention mechanisms",
+            "A type of computer processor",
+            "A mathematical transformation function"
+          ],
+          "correct_answer": 1,
+          "explanation": "Transformers are neural network architectures that rely on self-attention mechanisms, revolutionizing NLP and other fields.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "def_mc_7",
+          "question": "What is inference in machine learning?",
+          "options": [
+            "The training process of a model",
+            "Using a trained model to make predictions on new data",
+            "The process of collecting data",
+            "A type of neural network"
+          ],
+          "correct_answer": 1,
+          "explanation": "Inference is the process of using a trained model to make predictions or generate outputs on new, unseen data.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "def_mc_8",
+          "question": "What is a checkpoint in machine learning?",
+          "options": [
+            "A data validation step",
+            "A saved snapshot of model weights and training state during training",
+            "A type of neural network layer",
+            "An evaluation metric"
+          ],
+          "correct_answer": 1,
+          "explanation": "Checkpoints save the model's state during training, allowing you to resume training or use the model for inference.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "def_mc_9",
+          "question": "What is a token in NLP?",
+          "options": [
+            "A security key for API access",
+            "The smallest unit of text that a model processes (word, subword, or character)",
+            "A type of neural network",
+            "A data preprocessing step"
+          ],
+          "correct_answer": 1,
+          "explanation": "Tokens are the basic units of text processing, typically words, subwords, or characters that models operate on.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "def_mc_10",
+          "question": "What is model quantization?",
+          "options": [
+            "Counting the number of parameters in a model",
+            "Reducing the precision of model weights to decrease size and increase speed",
+            "Training multiple models simultaneously",
+            "A type of data augmentation"
+          ],
+          "correct_answer": 1,
+          "explanation": "Quantization reduces the precision of model weights (e.g., from 32-bit to 8-bit) to create smaller, faster models.",
+          "difficulty": "intermediate"
+        },
+        {
+          "id": "def_mc_11",
+          "question": "What is attention in neural networks?",
+          "options": [
+            "A mechanism that allows models to focus on different parts of the input",
+            "A type of activation function",
+            "A regularization technique",
+            "A data augmentation method"
+          ],
+          "correct_answer": 0,
+          "explanation": "Attention mechanisms allow models to dynamically focus on different parts of the input when making predictions.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "def_mc_12",
+          "question": "What is a pre-trained model?",
+          "options": [
+            "A model that failed during training",
+            "A model trained on a large dataset that can be used as a starting point",
+            "A model that only works with specific data",
+            "A model that doesn't need training"
+          ],
+          "correct_answer": 1,
+          "explanation": "Pre-trained models are trained on large datasets and can be fine-tuned or used as feature extractors for specific tasks.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "def_mc_13",
+          "question": "What is knowledge distillation?",
+          "options": [
+            "A data preprocessing technique",
+            "Training a smaller model to mimic a larger model's behavior",
+            "A type of neural network architecture",
+            "A method for data collection"
+          ],
+          "correct_answer": 1,
+          "explanation": "Knowledge distillation transfers knowledge from a large 'teacher' model to a smaller 'student' model for efficiency.",
+          "difficulty": "intermediate"
+        },
+        {
+          "id": "def_mc_14",
+          "question": "What is a foundation model?",
+          "options": [
+            "The first version of any machine learning model",
+            "A large-scale model trained on broad data that can be adapted to many tasks",
+            "A simple baseline model",
+            "A model used only for research"
+          ],
+          "correct_answer": 1,
+          "explanation": "Foundation models are large-scale models trained on diverse data that serve as a base for many downstream applications.",
+          "difficulty": "intermediate"
+        },
+        {
+          "id": "def_mc_15",
+          "question": "What is zero-shot learning?",
+          "options": [
+            "Learning without any training data",
+            "A model's ability to perform tasks it wasn't explicitly trained on",
+            "Training a model in zero time",
+            "A type of optimization algorithm"
+          ],
+          "correct_answer": 1,
+          "explanation": "Zero-shot learning enables models to perform tasks without task-specific training, often using learned representations.",
+          "difficulty": "intermediate"
+        }
+      ],
+      "open_ended": [
+        {
+          "id": "def_oe_1",
+          "question": "Explain the concept of 'emergent abilities' in large language models and provide examples.",
+          "difficulty": "advanced",
+          "topics": ["emergent_abilities", "scaling", "LLMs", "capabilities"]
+        },
+        {
+          "id": "def_oe_2",
+          "question": "Define and compare few-shot, one-shot, and zero-shot learning approaches. When would you use each?",
+          "difficulty": "intermediate",
+          "topics": ["few_shot", "zero_shot", "in_context_learning", "adaptation"]
+        }
+      ]
+    },
+    "ML Fundamentals": {
+      "multiple_choice": [
+        {
+          "id": "fund_mc_1",
+          "question": "What is the primary difference between supervised and unsupervised learning?",
+          "options": [
+            "Supervised learning is faster than unsupervised learning",
+            "Supervised learning uses labeled data, unsupervised learning does not",
+            "Supervised learning only works with numerical data",
+            "Unsupervised learning is more accurate"
+          ],
+          "correct_answer": 1,
+          "explanation": "The key distinction is that supervised learning algorithms learn from labeled training data, while unsupervised learning finds patterns in data without labels.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "fund_mc_2",
+          "question": "What is overfitting in machine learning?",
+          "options": [
+            "When a model is too simple to capture patterns",
+            "When a model performs well on training data but poorly on new data",
+            "When a model takes too long to train",
+            "When a model uses too much memory"
+          ],
+          "correct_answer": 1,
+          "explanation": "Overfitting occurs when a model learns the training data too well, including noise, making it perform poorly on unseen data.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "fund_mc_3",
+          "question": "What is the bias-variance tradeoff?",
+          "options": [
+            "The tradeoff between training time and accuracy",
+            "The tradeoff between model complexity and interpretability",
+            "The tradeoff between underfitting (high bias) and overfitting (high variance)",
+            "The tradeoff between precision and recall"
+          ],
+          "correct_answer": 2,
+          "explanation": "The bias-variance tradeoff describes the balance between a model's ability to minimize bias (underfitting) and variance (overfitting).",
+          "difficulty": "intermediate"
+        },
+        {
+          "id": "fund_mc_4",
+          "question": "What is cross-validation used for?",
+          "options": [
+            "To increase the size of the training dataset",
+            "To estimate how well a model will generalize to unseen data",
+            "To reduce training time",
+            "To improve model accuracy"
+          ],
+          "correct_answer": 1,
+          "explanation": "Cross-validation provides a more robust estimate of model performance by training and testing on different subsets of the data.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "fund_mc_5",
+          "question": "What is regularization in machine learning?",
+          "options": [
+            "A technique to increase model complexity",
+            "A technique to prevent overfitting by adding penalties to the loss function",
+            "A method to normalize input features",
+            "A way to speed up training"
+          ],
+          "correct_answer": 1,
+          "explanation": "Regularization adds penalty terms to the loss function to discourage complex models and prevent overfitting.",
+          "difficulty": "intermediate"
+        },
+        {
+          "id": "fund_mc_6",
+          "question": "What is the difference between precision and recall?",
+          "options": [
+            "Precision measures speed, recall measures accuracy",
+            "Precision is TP/(TP+FP), recall is TP/(TP+FN)",
+            "They are the same thing",
+            "Precision is for classification, recall is for regression"
+          ],
+          "correct_answer": 1,
+          "explanation": "Precision measures the accuracy of positive predictions, while recall measures the ability to find all positive instances.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "fund_mc_7",
+          "question": "What is gradient descent?",
+          "options": [
+            "A method to reduce model complexity",
+            "An optimization algorithm that minimizes loss by iteratively adjusting parameters",
+            "A technique for feature selection",
+            "A way to evaluate model performance"
+          ],
+          "correct_answer": 1,
+          "explanation": "Gradient descent is an optimization algorithm that iteratively moves parameters in the direction of steepest decrease of the loss function.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "fund_mc_8",
+          "question": "What is the purpose of a validation set?",
+          "options": [
+            "To train the model",
+            "To tune hyperparameters and assess model performance during development",
+            "To test the final model",
+            "To store extra data"
+          ],
+          "correct_answer": 1,
+          "explanation": "The validation set is used to tune hyperparameters and evaluate model performance during development, separate from the test set.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "fund_mc_9",
+          "question": "What is feature scaling and why is it important?",
+          "options": [
+            "It reduces the number of features",
+            "It normalizes features to similar ranges to prevent dominance by larger values",
+            "It removes irrelevant features",
+            "It increases the number of features"
+          ],
+          "correct_answer": 1,
+          "explanation": "Feature scaling ensures all features contribute equally to algorithms sensitive to feature magnitude, like gradient descent.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "fund_mc_10",
+          "question": "What is the curse of dimensionality?",
+          "options": [
+            "When there are too many data points",
+            "When high-dimensional spaces become sparse, making it hard to find patterns",
+            "When models become too complex",
+            "When training takes too long"
+          ],
+          "correct_answer": 1,
+          "explanation": "In high-dimensional spaces, data points become sparse and distances lose meaning, making pattern recognition difficult.",
+          "difficulty": "intermediate"
+        }
+      ],
+      "open_ended": [
+        {
+          "id": "fund_oe_1",
+          "question": "Explain the difference between bagging and boosting ensemble methods. When would you use each approach?",
+          "difficulty": "intermediate",
+          "topics": ["ensemble_methods", "bagging", "boosting", "variance", "bias"]
+        },
+        {
+          "id": "fund_oe_2",
+          "question": "Describe the process of hyperparameter tuning and explain at least three different approaches you could use.",
+          "difficulty": "intermediate",
+          "topics": ["hyperparameters", "grid_search", "random_search", "bayesian_optimization"]
+        },
+        {
+          "id": "fund_oe_3",
+          "question": "Explain what makes a loss function suitable for a particular machine learning problem. Give examples for classification and regression.",
+          "difficulty": "advanced",
+          "topics": ["loss_functions", "optimization", "classification", "regression"]
+        }
+      ]
+    },
+    "Deep Learning Basics": {
+      "multiple_choice": [
+        {
+          "id": "dl_mc_1",
+          "question": "What is backpropagation?",
+          "options": [
+            "A method to initialize neural network weights",
+            "An algorithm to compute gradients for neural network training",
+            "A technique to prevent overfitting",
+            "A way to normalize inputs"
+          ],
+          "correct_answer": 1,
+          "explanation": "Backpropagation computes gradients of the loss function with respect to network parameters using the chain rule.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "dl_mc_2",
+          "question": "What is the purpose of activation functions in neural networks?",
+          "options": [
+            "To speed up training",
+            "To introduce non-linearity into the model",
+            "To reduce the number of parameters",
+            "To normalize the outputs"
+          ],
+          "correct_answer": 1,
+          "explanation": "Activation functions introduce non-linearity, allowing neural networks to learn complex patterns beyond linear relationships.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "dl_mc_3",
+          "question": "What is batch normalization?",
+          "options": [
+            "Training with small batch sizes",
+            "A technique that normalizes inputs to each layer to stabilize training",
+            "A method to select the best batch size",
+            "A way to combine multiple batches"
+          ],
+          "correct_answer": 1,
+          "explanation": "Batch normalization normalizes layer inputs to have zero mean and unit variance, stabilizing and accelerating training.",
+          "difficulty": "intermediate"
+        },
+        {
+          "id": "dl_mc_4",
+          "question": "What is dropout in neural networks?",
+          "options": [
+            "Removing neurons permanently from the network",
+            "A regularization technique that randomly sets some neurons to zero during training",
+            "A method to reduce network size",
+            "A way to handle missing data"
+          ],
+          "correct_answer": 1,
+          "explanation": "Dropout randomly sets neurons to zero during training to prevent overfitting by reducing co-adaptation between neurons.",
+          "difficulty": "intermediate"
+        },
+        {
+          "id": "dl_mc_5",
+          "question": "What is the vanishing gradient problem?",
+          "options": [
+            "When gradients become too large during training",
+            "When gradients become very small in deep networks, slowing learning in early layers",
+            "When the loss function stops decreasing",
+            "When the model starts overfitting"
+          ],
+          "correct_answer": 1,
+          "explanation": "Vanishing gradients occur when gradients become exponentially small as they propagate back through deep networks.",
+          "difficulty": "intermediate"
+        },
+        {
+          "id": "dl_mc_6",
+          "question": "What is the difference between ReLU and sigmoid activation functions?",
+          "options": [
+            "ReLU is only for output layers, sigmoid is for hidden layers",
+            "ReLU outputs 0 for negative inputs and x for positive; sigmoid outputs between 0 and 1",
+            "They are exactly the same",
+            "ReLU is slower to compute than sigmoid"
+          ],
+          "correct_answer": 1,
+          "explanation": "ReLU is f(x) = max(0, x), while sigmoid is f(x) = 1/(1 + e^(-x)). ReLU helps with vanishing gradients.",
+          "difficulty": "beginner"
+        }
+      ],
+      "open_ended": [
+        {
+          "id": "dl_oe_1",
+          "question": "Compare and contrast different optimization algorithms (SGD, Adam, RMSprop). When would you choose each one?",
+          "difficulty": "advanced",
+          "topics": ["optimization", "SGD", "Adam", "RMSprop", "learning_rate"]
+        },
+        {
+          "id": "dl_oe_2",
+          "question": "Explain the concept of transfer learning and describe a scenario where you would apply it in practice.",
+          "difficulty": "intermediate",
+          "topics": ["transfer_learning", "pre_trained_models", "feature_extraction", "fine_tuning"]
+        }
+      ]
+    },
+    "RAG": {
+      "multiple_choice": [
+        {
+          "id": "rag_mc_1",
+          "question": "What is the main advantage of using RAG (Retrieval Augmented Generation) over fine-tuning for incorporating new knowledge into a language model?",
+          "options": [
+            "RAG is always faster than fine-tuning",
+            "RAG can incorporate up-to-date information without retraining",
+            "RAG requires less computational resources",
+            "RAG works better with smaller models"
+          ],
+          "correct_answer": 1,
+          "explanation": "RAG allows incorporating new, up-to-date information without retraining the model, making it ideal for dynamic knowledge bases.",
+          "difficulty": "intermediate"
+        },
+        {
+          "id": "rag_mc_2", 
+          "question": "In a RAG system, what happens during the retrieval step?",
+          "options": [
+            "The model generates new text from scratch",
+            "Relevant documents are found using similarity search",
+            "The model is fine-tuned on new data",
+            "Embeddings are created for the input query"
+          ],
+          "correct_answer": 1,
+          "explanation": "During retrieval, the system searches for relevant documents using similarity search, typically with vector embeddings.",
+          "difficulty": "beginner"
+        }
+      ],
+      "open_ended": [
+        {
+          "id": "rag_oe_1",
+          "question": "Explain the key components of a RAG system and how they work together to provide accurate, contextual responses.",
+          "difficulty": "intermediate",
+          "topics": ["retrieval", "generation", "embeddings", "vector_search"]
+        },
+        {
+          "id": "rag_oe_2",
+          "question": "What are the trade-offs between using dense vs sparse retrieval methods in RAG systems?",
+          "difficulty": "advanced",
+          "topics": ["dense_retrieval", "sparse_retrieval", "trade_offs"]
+        }
+      ],
+      "coding": [
+        {
+          "id": "rag_code_1",
+          "question": "Implement a simple RAG retrieval function that takes a query and returns the top-k most similar documents using cosine similarity.",
+          "difficulty": "intermediate",
+          "starter_code": "import numpy as np\nfrom sklearn.metrics.pairwise import cosine_similarity\n\ndef rag_retrieve(query_embedding, document_embeddings, documents, k=3):\n    # Your implementation here\n    pass",
+          "topics": ["cosine_similarity", "retrieval", "numpy"]
+        }
+      ]
+    },
+    "Fine-tuning": {
+      "multiple_choice": [
+        {
+          "id": "ft_mc_1",
+          "question": "What is the primary purpose of using LoRA (Low-Rank Adaptation) in fine-tuning?",
+          "options": [
+            "To increase model size",
+            "To reduce memory usage and training time",
+            "To improve model accuracy",
+            "To enable multi-modal training"
+          ],
+          "correct_answer": 1,
+          "explanation": "LoRA reduces memory usage and training time by training only low-rank adaptation matrices instead of all model parameters.",
+          "difficulty": "intermediate"
+        },
+        {
+          "id": "ft_mc_2",
+          "question": "Which learning rate schedule is commonly recommended for fine-tuning pre-trained models?",
+          "options": [
+            "Constant high learning rate",
+            "Exponential decay",
+            "Lower learning rate than training from scratch",
+            "Cyclic learning rates"
+          ],
+          "correct_answer": 2,
+          "explanation": "Fine-tuning typically uses lower learning rates to avoid catastrophic forgetting of pre-trained knowledge.",
+          "difficulty": "beginner"
+        }
+      ],
+      "open_ended": [
+        {
+          "id": "ft_oe_1",
+          "question": "Compare and contrast full fine-tuning, parameter-efficient fine-tuning (PEFT), and prompt tuning. When would you use each approach?",
+          "difficulty": "advanced",
+          "topics": ["full_finetuning", "PEFT", "prompt_tuning", "comparison"]
+        }
+      ]
+    },
+    "Model Architecture": {
+      "multiple_choice": [
+        {
+          "id": "arch_mc_1",
+          "question": "What is the main purpose of the attention mechanism in transformer models?",
+          "options": [
+            "To reduce computational complexity",
+            "To allow the model to focus on relevant parts of the input",
+            "To normalize the input data",
+            "To prevent overfitting"
+          ],
+          "correct_answer": 1,
+          "explanation": "Attention mechanisms allow models to dynamically focus on relevant parts of the input sequence when making predictions.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "arch_mc_2",
+          "question": "In a transformer decoder, what is the purpose of masked self-attention?",
+          "options": [
+            "To reduce memory usage",
+            "To prevent the model from seeing future tokens during training",
+            "To improve gradient flow",
+            "To enable parallel processing"
+          ],
+          "correct_answer": 1,
+          "explanation": "Masked self-attention prevents the model from looking at future tokens, ensuring autoregressive generation.",
+          "difficulty": "intermediate"
+        },
+        {
+          "id": "arch_mc_3",
+          "question": "What is the primary advantage of residual connections in deep neural networks?",
+          "options": [
+            "They reduce the number of parameters",
+            "They help with gradient flow and prevent vanishing gradients",
+            "They increase model capacity",
+            "They reduce overfitting"
+          ],
+          "correct_answer": 1,
+          "explanation": "Residual connections allow gradients to flow directly through skip connections, helping with training very deep networks.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "arch_mc_4",
+          "question": "In a CNN, what is the purpose of pooling layers?",
+          "options": [
+            "To increase the spatial resolution",
+            "To add non-linearity to the model",
+            "To reduce spatial dimensions and add translation invariance",
+            "To normalize the activations"
+          ],
+          "correct_answer": 2,
+          "explanation": "Pooling layers reduce spatial dimensions while providing translation invariance by summarizing local regions.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "arch_mc_5",
+          "question": "What distinguishes a GRU from an LSTM?",
+          "options": [
+            "GRU has more gates than LSTM",
+            "GRU combines forget and input gates into an update gate",
+            "GRU cannot handle long sequences",
+            "GRU only works with text data"
+          ],
+          "correct_answer": 1,
+          "explanation": "GRU simplifies LSTM by combining the forget and input gates into a single update gate, making it computationally more efficient.",
+          "difficulty": "intermediate"
+        }
+      ],
+      "open_ended": [
+        {
+          "id": "arch_oe_1",
+          "question": "Explain the differences between encoder-only, decoder-only, and encoder-decoder transformer architectures. Give examples of when each would be most appropriate.",
+          "difficulty": "advanced",
+          "topics": ["encoder", "decoder", "architecture_types", "use_cases"]
+        },
+        {
+          "id": "arch_oe_2",
+          "question": "Describe the vanishing gradient problem and explain three different approaches to mitigate it in deep neural networks.",
+          "difficulty": "intermediate",
+          "topics": ["vanishing_gradients", "deep_learning", "optimization"]
+        }
+      ]
+    },
+    "Data Processing": {
+      "multiple_choice": [
+        {
+          "id": "data_mc_1",
+          "question": "What is the primary purpose of tokenization in NLP preprocessing?",
+          "options": [
+            "To normalize text case",
+            "To convert text into numerical representations",
+            "To remove stop words", 
+            "To split text into manageable units"
+          ],
+          "correct_answer": 3,
+          "explanation": "Tokenization splits text into smaller units (tokens) that can be processed by machine learning models.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "data_mc_2",
+          "question": "What is a key advantage of subword tokenization (like BPE) over word-level tokenization?",
+          "options": [
+            "Faster processing speed",
+            "Better handling of out-of-vocabulary words",
+            "Smaller vocabulary size",
+            "Simpler implementation"
+          ],
+          "correct_answer": 1,
+          "explanation": "Subword tokenization can handle out-of-vocabulary words by breaking them into known subword units.",
+          "difficulty": "intermediate"
+        }
+      ],
+      "open_ended": [
+        {
+          "id": "data_oe_1",
+          "question": "Describe the data preprocessing pipeline for training a large language model. What are the key considerations at each step?",
+          "difficulty": "advanced",
+          "topics": ["preprocessing", "cleaning", "deduplication", "tokenization", "scaling"]
+        }
+      ]
+    },
+    "MLOps": {
+      "multiple_choice": [
+        {
+          "id": "mlops_mc_1",
+          "question": "What is model drift in the context of MLOps?",
+          "options": [
+            "When model weights change during training",
+            "When model performance degrades over time in production",
+            "When model size increases",
+            "When model training takes longer"
+          ],
+          "correct_answer": 1,
+          "explanation": "Model drift refers to the degradation of model performance over time due to changes in data distribution or other factors.",
+          "difficulty": "intermediate"
+        }
+      ],
+      "open_ended": [
+        {
+          "id": "mlops_oe_1",
+          "question": "Design a monitoring system for a large language model in production. What metrics would you track and how would you detect when the model needs retraining?",
+          "difficulty": "advanced",
+          "topics": ["monitoring", "metrics", "drift_detection", "retraining"]
+        }
+      ]
+    },
+    "Evaluation": {
+      "multiple_choice": [
+        {
+          "id": "eval_mc_1",
+          "question": "What does the BLEU score measure in NLP evaluation?",
+          "options": [
+            "Semantic similarity between texts",
+            "N-gram overlap between generated and reference text",
+            "Grammatical correctness",
+            "Text fluency"
+          ],
+          "correct_answer": 1,
+          "explanation": "BLEU measures n-gram overlap between generated text and reference translations, commonly used for machine translation.",
+          "difficulty": "beginner"
+        },
+        {
+          "id": "eval_mc_2",
+          "question": "What is a key limitation of perplexity as an evaluation metric for language models?",
+          "options": [
+            "It's computationally expensive",
+            "It doesn't correlate well with human judgment of text quality",
+            "It only works for small models",
+            "It requires labeled data"
+          ],
+          "correct_answer": 1,
+          "explanation": "Perplexity measures how well a model predicts text but doesn't always correlate with human perception of text quality.",
+          "difficulty": "intermediate"
+        }
+      ],
+      "open_ended": [
+        {
+          "id": "eval_oe_1",
+          "question": "Compare traditional NLP metrics (BLEU, ROUGE) with modern evaluation approaches for large language models. What are the strengths and weaknesses of each?",
+          "difficulty": "advanced",
+          "topics": ["traditional_metrics", "modern_evaluation", "human_evaluation", "automated_metrics"]
+        }
+      ]
+    },
+    "Vector Databases": {
+      "multiple_choice": [
+        {
+          "id": "vector_mc_1",
+          "question": "What is the primary advantage of using HNSW (Hierarchical Navigable Small World) for vector search?",
+          "options": [
+            "Perfect accuracy",
+            "Low memory usage",
+            "Fast approximate search with good recall",
+            "Works only with small datasets"
+          ],
+          "correct_answer": 2,
+          "explanation": "HNSW provides fast approximate nearest neighbor search with high recall, making it ideal for large-scale vector databases.",
+          "difficulty": "advanced"
+        }
+      ],
+      "open_ended": [
+        {
+          "id": "vector_oe_1",
+          "question": "Explain the trade-offs between different vector indexing methods (IVF, HNSW, LSH) in terms of speed, accuracy, and memory usage.",
+          "difficulty": "advanced",
+          "topics": ["IVF", "HNSW", "LSH", "trade_offs", "indexing"]
+        }
+      ]
+    },
+    "Transformers": {
+      "multiple_choice": [
+        {
+          "id": "transformer_mc_1",
+          "question": "What is the time complexity of self-attention in transformers with respect to sequence length?",
+          "options": [
+            "O(n)",
+            "O(n²)",
+            "O(n log n)",
+            "O(1)"
+          ],
+          "correct_answer": 1,
+          "explanation": "Self-attention has O(n²) complexity with respect to sequence length, which becomes expensive for long sequences.",
+          "difficulty": "intermediate"
+        }
+      ],
+      "open_ended": [
+        {
+          "id": "transformer_oe_1",
+          "question": "Explain how positional encoding works in transformers and why it's necessary. Compare different types of positional encoding approaches.",
+          "difficulty": "advanced",
+          "topics": ["positional_encoding", "sinusoidal", "learned_encoding", "relative_position"]
+        }
+      ]
+    }
+  },
+  "question_types": [
+    "multiple_choice",
+    "open_ended",
+    "coding"
+  ],
+  "difficulties": [
+    "beginner",
+    "intermediate", 
+    "advanced"
+  ],
+  "metadata": {
+    "version": "3.0",
+    "total_questions": 67,
+    "last_updated": "2025-08-07"
+  }
+}
