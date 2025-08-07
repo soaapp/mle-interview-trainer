@@ -15,7 +15,9 @@ from evaluator import PerformanceEvaluator, QuestionAttempt, AdaptiveDifficultyM
 from database import DatabaseManager
 from ml_engine import MLEngine
 
+# Explicitly load environment variables
 load_dotenv()
+print(f"Debug at startup - .env loaded. API key exists: {bool(os.getenv('OPENAI_API_KEY'))}")
 
 st.set_page_config(
     page_title="ML Engineer Interview Trainer",
@@ -41,7 +43,27 @@ def initialize_session_state():
     if 'question_start_time' not in st.session_state:
         st.session_state.question_start_time = None
     if 'openai_api_key' not in st.session_state:
-        st.session_state.openai_api_key = os.getenv('OPENAI_API_KEY', '')
+        # Load API key only from environment/.env file
+        api_key = os.getenv('OPENAI_API_KEY', '')
+        
+        # If not found, try loading .env again (Streamlit might need explicit reload)
+        if not api_key:
+            load_dotenv()
+            api_key = os.getenv('OPENAI_API_KEY', '')
+        
+        # If still not found, try reading from .env file directly
+        if not api_key:
+            try:
+                with open('.env', 'r') as f:
+                    for line in f:
+                        if line.startswith('OPENAI_API_KEY='):
+                            api_key = line.split('=', 1)[1].strip()
+                            break
+            except FileNotFoundError:
+                pass
+        
+        st.session_state.openai_api_key = api_key
+        print(f"Debug: API key loaded: {bool(api_key)} (length: {len(api_key) if api_key else 0})")
     if 'evaluator' not in st.session_state:
         st.session_state.evaluator = PerformanceEvaluator()
     if 'difficulty_manager' not in st.session_state:
@@ -62,17 +84,17 @@ def initialize_session_state():
         st.session_state.show_api_input = False
 
 def get_openai_client():
-    """Get OpenAI client if API key is available"""
+    """Get OpenAI client with minimal complexity"""
     if not st.session_state.openai_api_key:
         return None
         
+    # Use the OpenAIClient wrapper that handles all the complexity
     try:
+        from openai_client import OpenAIClient
         return OpenAIClient(st.session_state.openai_api_key)
     except Exception as e:
-        # Only show error once per session to avoid spam
-        if 'openai_error_shown' not in st.session_state:
-            st.session_state.openai_error_shown = True
-            st.warning(f"⚠️ OpenAI client unavailable: {str(e)}. Bank questions will work fine.")
+        # Only show error in debug mode
+        print(f"Debug: OpenAI client creation failed: {str(e)}")
         return None
 
 def main():
@@ -302,6 +324,7 @@ def show_practice_page(db, question_manager, ml_engine):
     with col2:
         if st.button("🤖 Force AI Question"):
             openai_client = get_openai_client()
+            
             if openai_client:
                 with st.spinner("Generating question with AI..."):
                     question_data = openai_client.generate_question(
@@ -315,7 +338,7 @@ def show_practice_page(db, question_manager, ml_engine):
                     st.session_state.last_result = None
                 st.rerun()
             else:
-                st.error("Please set your OpenAI API key in Settings first!")
+                st.error("OpenAI not available. Please check your API key in Settings.")
     
     with col3:
         if st.button("📚 Force Bank Question"):
@@ -642,46 +665,19 @@ def show_settings_page(db, ml_engine):
     
     # Show API key status
     if st.session_state.openai_api_key:
-        st.success("✅ API key is configured")
-        col1, col2 = st.columns(2)
-        with col1:
-            if st.button("🔄 Update API Key"):
-                st.session_state.show_api_input = True
-        with col2:
-            if st.button("🗑️ Remove API Key"):
-                st.session_state.openai_api_key = ""
-                db.set_preference("openai_api_key", "")
-                st.success("API key removed!")
-                st.rerun()
+        st.success("✅ API key is configured from .env file")
+        st.write(f"• API key length: {len(st.session_state.openai_api_key)}")
+        st.write(f"• Key starts with: {st.session_state.openai_api_key[:15]}...")
     else:
-        st.warning("⚠️ No API key configured - AI features disabled")
-        st.session_state.show_api_input = True
-    
-    # Show input field only when needed
-    if st.session_state.get('show_api_input', False):
-        api_key = st.text_input(
-            "Enter OpenAI API Key:",
-            value="",
-            type="password",
-            placeholder="sk-...",
-            help="Your OpenAI API key for AI-generated questions and evaluations"
-        )
+        st.error("❌ No API key found in .env file")
+        st.markdown("""
+        **To configure your OpenAI API key:**
+        1. Create or edit the `.env` file in your project directory
+        2. Add: `OPENAI_API_KEY=your_api_key_here`
+        3. Restart the application
         
-        col1, col2 = st.columns(2)
-        with col1:
-            if st.button("💾 Save API Key"):
-                if api_key.strip():
-                    st.session_state.openai_api_key = api_key.strip()
-                    db.set_preference("openai_api_key", api_key.strip())
-                    st.session_state.show_api_input = False
-                    st.success("✅ API key saved successfully!")
-                    st.rerun()
-                else:
-                    st.error("Please enter a valid API key")
-        with col2:
-            if st.button("❌ Cancel"):
-                st.session_state.show_api_input = False
-                st.rerun()
+        Get your API key from: https://platform.openai.com/api-keys
+        """)
     
     st.divider()
     
