@@ -52,16 +52,28 @@ def initialize_session_state():
         st.session_state.awaiting_answer = False
     if 'last_result' not in st.session_state:
         st.session_state.last_result = None
+    if 'api_question_count' not in st.session_state:
+        st.session_state.api_question_count = 0
+    if 'bank_question_count' not in st.session_state:
+        st.session_state.bank_question_count = 0
+    if 'selected_tab' not in st.session_state:
+        st.session_state.selected_tab = "🏠 Home"
+    if 'show_api_input' not in st.session_state:
+        st.session_state.show_api_input = False
 
 def get_openai_client():
     """Get OpenAI client if API key is available"""
-    if st.session_state.openai_api_key:
-        try:
-            return OpenAIClient(st.session_state.openai_api_key)
-        except Exception as e:
-            st.error(f"Error initializing OpenAI client: {e}")
-            return None
-    return None
+    if not st.session_state.openai_api_key:
+        return None
+        
+    try:
+        return OpenAIClient(st.session_state.openai_api_key)
+    except Exception as e:
+        # Only show error once per session to avoid spam
+        if 'openai_error_shown' not in st.session_state:
+            st.session_state.openai_error_shown = True
+            st.warning(f"⚠️ OpenAI client unavailable: {str(e)}. Bank questions will work fine.")
+        return None
 
 def main():
     initialize_session_state()
@@ -74,9 +86,6 @@ def main():
     with st.sidebar:
         st.header("Navigation")
         
-        # Initialize selected tab if not exists
-        if 'selected_tab' not in st.session_state:
-            st.session_state.selected_tab = "🏠 Home"
         
         tab = st.selectbox(
             "Choose Section:",
@@ -233,15 +242,9 @@ def show_practice_page(db, question_manager, ml_engine):
     # Smart question generation with API usage limiting
     def get_next_question_source():
         """Determine whether to use AI or bank question based on usage patterns"""
-        # Initialize counter if not exists
-        if 'api_question_count' not in st.session_state:
-            st.session_state.api_question_count = 0
-        if 'bank_question_count' not in st.session_state:
-            st.session_state.bank_question_count = 0
         
-        # Check if we have API key
-        openai_client = get_openai_client()
-        if not openai_client:
+        # Check if we have API key (without initializing client)
+        if not st.session_state.openai_api_key:
             return "bank"
         
         # Strategy: Alternate between AI and bank questions
@@ -365,7 +368,12 @@ def display_question_and_handle_response(db, question_manager, selected_topic, m
     """Display question and handle user response"""
     
     question_data = st.session_state.current_question_data
-    openai_client = get_openai_client()
+    
+    # Only get OpenAI client if needed (for evaluation)
+    try:
+        openai_client = get_openai_client()
+    except:
+        openai_client = None
     
     # Get appropriate handler
     handler = question_manager.get_handler(

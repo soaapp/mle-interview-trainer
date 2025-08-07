@@ -33,11 +33,13 @@ class MultipleChoiceHandler(QuestionHandler):
             st.error("No options provided for this question")
             return None
         
-        # Create radio button for selection
+        # Create radio button for selection with stable key
+        question_id = question_data.get('id', 'unknown')
         selected = st.radio(
             "Choose your answer:",
             options,
-            key=f"mc_{question_data.get('id', 'unknown')}_{time.time()}"
+            key=f"mc_{question_id}",
+            index=None  # Start with no selection
         )
         
         return selected
@@ -85,10 +87,11 @@ class OpenEndedHandler(QuestionHandler):
             st.markdown("**Related topics:** " + ", ".join(topics))
         
         # Text area for response
+        question_id = question_data.get('id', 'unknown')
         response = st.text_area(
             "Your answer:",
             height=200,
-            key=f"oe_{question_data.get('id', 'unknown')}_{time.time()}",
+            key=f"oe_{question_id}",
             placeholder="Provide a detailed explanation..."
         )
         
@@ -178,11 +181,12 @@ class CodingHandler(QuestionHandler):
                     st.markdown(f"{i}. {hint}")
         
         # Code editor
+        question_id = question_data.get('id', 'unknown')
         user_code = st.text_area(
             "Your solution:",
             value=starter_code,
             height=300,
-            key=f"code_{question_data.get('id', 'unknown')}_{time.time()}"
+            key=f"code_{question_id}"
         )
         
         return user_code.strip() if user_code else None

@@ -9,7 +9,6 @@ class OpenAIClient:
         if not api_key:
             raise ValueError("OpenAI API key is required")
         
-        openai.api_key = api_key
         self.client = openai.OpenAI(api_key=api_key)
         
     def generate_question(self, 
