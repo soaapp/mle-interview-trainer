@@ -619,17 +619,48 @@ def show_settings_page(db, ml_engine):
     # OpenAI API Key
     st.subheader("🔑 OpenAI API Configuration")
     
-    api_key = st.text_input(
-        "OpenAI API Key:",
-        value=st.session_state.openai_api_key,
-        type="password",
-        help="Your OpenAI API key for generating questions and evaluating responses"
-    )
+    # Show API key status
+    if st.session_state.openai_api_key:
+        st.success("✅ API key is configured")
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("🔄 Update API Key"):
+                st.session_state.show_api_input = True
+        with col2:
+            if st.button("🗑️ Remove API Key"):
+                st.session_state.openai_api_key = ""
+                db.set_preference("openai_api_key", "")
+                st.success("API key removed!")
+                st.rerun()
+    else:
+        st.warning("⚠️ No API key configured - AI features disabled")
+        st.session_state.show_api_input = True
     
-    if st.button("Save API Key"):
-        st.session_state.openai_api_key = api_key
-        db.set_preference("openai_api_key", api_key)
-        st.success("✅ API key saved successfully!")
+    # Show input field only when needed
+    if st.session_state.get('show_api_input', False):
+        api_key = st.text_input(
+            "Enter OpenAI API Key:",
+            value="",
+            type="password",
+            placeholder="sk-...",
+            help="Your OpenAI API key for AI-generated questions and evaluations"
+        )
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("💾 Save API Key"):
+                if api_key.strip():
+                    st.session_state.openai_api_key = api_key.strip()
+                    db.set_preference("openai_api_key", api_key.strip())
+                    st.session_state.show_api_input = False
+                    st.success("✅ API key saved successfully!")
+                    st.rerun()
+                else:
+                    st.error("Please enter a valid API key")
+        with col2:
+            if st.button("❌ Cancel"):
+                st.session_state.show_api_input = False
+                st.rerun()
     
     st.divider()
     
