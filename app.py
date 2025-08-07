@@ -73,10 +73,21 @@ def main():
     # Sidebar for navigation and stats
     with st.sidebar:
         st.header("Navigation")
+        
+        # Initialize selected tab if not exists
+        if 'selected_tab' not in st.session_state:
+            st.session_state.selected_tab = "🏠 Home"
+        
         tab = st.selectbox(
             "Choose Section:",
-            ["🏠 Home", "📚 Practice Questions", "📊 Progress Dashboard", "🏆 Achievements", "⚙️ Settings"]
+            ["🏠 Home", "📚 Practice Questions", "📊 Progress Dashboard", "🏆 Achievements", "⚙️ Settings"],
+            index=["🏠 Home", "📚 Practice Questions", "📊 Progress Dashboard", "🏆 Achievements", "⚙️ Settings"].index(st.session_state.selected_tab),
+            key="nav_selectbox"
         )
+        
+        # Update session state when user manually changes selection
+        if tab != st.session_state.selected_tab:
+            st.session_state.selected_tab = tab
         
         st.divider()
         
@@ -182,6 +193,8 @@ def show_home_page(db):
     if st.button("🚀 Start Practice Session", type="primary", use_container_width=True):
         if not st.session_state.current_session_id:
             st.session_state.current_session_id = db.create_session()
+        # Navigate to Practice Questions page
+        st.session_state.selected_tab = "📚 Practice Questions"
         st.rerun()
 
 def show_practice_page(db, question_manager, ml_engine):
