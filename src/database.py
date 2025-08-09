@@ -3,7 +3,7 @@ import json
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Tuple, Any
 from dataclasses import asdict
-from evaluator import QuestionAttempt, SessionStats
+from .evaluator import QuestionAttempt, SessionStats
 import pandas as pd
 import os
 

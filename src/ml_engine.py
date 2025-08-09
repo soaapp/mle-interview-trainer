@@ -47,7 +47,7 @@ class MLEngine:
             st.error(f"Error loading sentence transformer: {e}")
             return None
     
-    def build_question_embeddings(self, question_bank_path: str = "question_bank.json"):
+    def build_question_embeddings(self, question_bank_path: str = "data/question_bank.json"):
         """
         Build embeddings for all questions in the question bank
         This is the core ML component for semantic similarity

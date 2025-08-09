@@ -9,11 +9,11 @@ import plotly.graph_objects as go
 import time
 
 # Import our custom modules
-from openai_client import OpenAIClient
-from question_types import QuestionManager, MultipleChoiceHandler, OpenEndedHandler, CodingHandler
-from evaluator import PerformanceEvaluator, QuestionAttempt, AdaptiveDifficultyManager
-from database import DatabaseManager
-from ml_engine import MLEngine
+from src.openai_client import OpenAIClient
+from src.question_types import QuestionManager, MultipleChoiceHandler, OpenEndedHandler, CodingHandler
+from src.evaluator import PerformanceEvaluator, QuestionAttempt, AdaptiveDifficultyManager
+from src.database import DatabaseManager
+from src.ml_engine import MLEngine
 
 # Explicitly load environment variables
 load_dotenv()

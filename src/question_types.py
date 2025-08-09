@@ -2,7 +2,7 @@ import streamlit as st
 import json
 import time
 from typing import Dict, List, Optional, Any, Tuple
-from openai_client import OpenAIClient
+from .openai_client import OpenAIClient
 
 class QuestionHandler:
     """Base class for handling different question types"""
@@ -307,7 +307,7 @@ class CodingHandler(QuestionHandler):
 class QuestionManager:
     """Manages loading and serving questions"""
     
-    def __init__(self, question_bank_path: str = "question_bank.json"):
+    def __init__(self, question_bank_path: str = "data/question_bank.json"):
         self.question_bank_path = question_bank_path
         self.handlers = {
             "multiple_choice": MultipleChoiceHandler,
