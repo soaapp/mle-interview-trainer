@@ -2,6 +2,16 @@
 
 An interactive AI-powered application that helps Machine Learning Engineers train and prep for interviews using intelligent question generation, ML-powered recommendations, and comprehensive progress tracking.
 
+## Visual Walkthrough
+<img width="2560" height="1440" alt="Screenshot 2025-12-01 at 4 11 59 PM (2)" src="https://github.com/user-attachments/assets/2343daac-bdcd-45de-bb12-876deded321b" />
+
+<img width="2560" height="1440" alt="Screenshot 2025-12-01 at 4 13 58 PM (2)" src="https://github.com/user-attachments/assets/50da90fb-4255-4a64-80e8-516f1d6488d7" />
+
+<img width="2560" height="1440" alt="Screenshot 2025-12-01 at 4 14 18 PM (2)" src="https://github.com/user-attachments/assets/1b9e7f76-e164-4549-a5ec-9190fbba0e7e" />
+
+
+
+
 ## 🚀 Quick Start
 
 ```bash
